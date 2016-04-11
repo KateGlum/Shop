@@ -1,0 +1,68 @@
+﻿﻿{% extends 'shop/base.html' %}
+
+{% block title %}
+Корзина
+{% endblock %}
+
+{% block jumbotron %}
+          <div class="jumbotron">
+            <h1>Корзина</h1>
+            <h2><a href="http://ngve.ru/">NGVE.RU</a> Товары</h2>
+          </div>
+{% endblock %}
+
+{% block content %}
+            <div class="korzina">
+            </div>
+          <h4>Сумма в корзине</h4>
+          <div class="total">Всего <span class="summa">0</span></div>
+          <p><a class="btn btn-sm btn-default" href="{% url 'zakaz' %}" role="button">Подтверждение заказа &raquo;</a></p>
+<script type="text/javascript">
+    $(function(){
+        var arr1 = $.cookie('cart');
+        if(!arr1){
+            arr1 = '[]';
+        }
+        var json1 = $.parseJSON(arr1);
+        var summa1 = 0;
+        $.each(json1, function(index, value){
+            $('.korzina').append(
+            '<div class="cow"><div class="id" style="display:none">'+index+'</div><img src="'+value['img']+'"><div class="name">'+value['name']+'</div><div class="price">'+value['price']+'</div><div class="delete">X</div></div>'
+            );
+            summa1 = summa1 + parseInt(value['price']);
+        });
+        $('.total .summa').text(summa1);
+        $('.delete').on('click', function(){
+            var parent = $(this).parent();
+            var obj = parseInt($(this).closest('.cow').find('.id').text());
+            var arr = $.cookie('cart');
+            if(!arr){
+                arr = '[]';
+            }
+            var json = $.parseJSON(arr);
+            var summa = parseInt($('.total .summa').text());
+            $.each(json, function(index, value){
+                if(index==obj){
+                    summa = summa - parseInt(value['price']);
+                    json.splice(index, 1);
+                }
+            });
+            $.cookie('cart', JSON.stringify(json), {path: '/'});
+            $('.total .summa').text(summa);
+            parent.remove();
+            $.each($('.id'), function(index, value){
+                $(this).text(index);
+            });
+        });
+        $('.btn btn-xs btn-primary').on('click', function(){
+            var arr = $.cookie('cart');
+            if(!arr1){
+                arr1 = '[]';
+            }
+            var json = $.parseJSON(arr);
+            $.cookie('cart', JSON.stringify(json), {path: '/'});
+        });
+    });
+</script>
+
+{% endblock %}

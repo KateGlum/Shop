@@ -1,0 +1,66 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}
+{{ item.name }}
+{% endblock %}
+
+{% block jumbotron %}
+          <div class="jumbotron">
+            <h1>{{ item.name }}</h1>
+            <h2><a href="http://ngve.ru/">NGVE.RU</a> Товары</h2>
+          </div>
+{% endblock %}
+
+{% block content %}
+          <div class="row">
+                <div class="col-xs-6 col-lg-4" margin="auto">
+                    <div id="pic">
+                      <img src="{{ item.image.url }}" width="800" height="800" class="img-responsive" alt="Изображение">
+                    </div>
+                    <div id="text">
+                      <h3><span class="summa">{{ item.price }}</span></h3>
+                      <h4>Категория:{{ item.category }}</h4>
+                      <h4>Метка:{{ item.alias }}</h4>
+                      <p><a class="btn btn-sm btn-default" href="#" role="button">Добавить в корзину &raquo;</a></p>
+                      <h4><div id="summa">0</div></h4>
+                      <a class="btn btn-xs btn-primary" href="{% url 'cart' %}" role="button">Оформить заказ &raquo;</a>
+                    </div>
+                </div><!--/.col-xs-6.col-lg-4-->
+          </div><!--/row-->
+<div id="desc">
+    <h4>{{ item.description }}</h4>
+</div>
+<script type="text/javascript">
+    $(function() {
+        var arr1 = $.cookie('cart');
+        if(!arr1){
+            arr1 = '[]';
+        }
+        var json1 = $.parseJSON(arr1);
+        var summa1 = 0;
+        $.each(json1, function(index, value){
+            summa1 = summa1 + parseInt(value['price']);
+        });
+        $('#summa').text(summa1);
+
+        $('#text p .btn.btn-default').click(function(){
+            var arr = $.cookie('cart');
+            if(!arr){
+                arr = '[]';
+            }
+            var json = $.parseJSON(arr);
+            json.push({
+                'name': $('.jumbotron h1').text(),
+                'price': $('#text h3 .summa').text(),
+                'img': $('img.img-responsive').attr('src'),
+            });
+            $.cookie('cart', JSON.stringify(json), { path: '/' });
+            var summa = 0;
+            $.each(json, function(index, value){
+                summa = summa + parseInt(value['price']);
+            });
+            $('#summa').text(summa);
+        });
+    });
+</script>
+{% endblock %}

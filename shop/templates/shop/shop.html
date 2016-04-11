@@ -1,0 +1,48 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}
+Оборудование для газомоторного транспорта
+{% endblock %}
+
+{% block jumbotron %}
+          <div class="jumbotron">
+            <h1>Магазин</h1>
+            <h2><a href="http://ngve.ru/">NGVE.RU</a> Товары</h2>
+          </div>
+{% endblock %}
+
+{% block content %}
+          <div class="row">
+              {% for item in items %}
+                <div class="col-xs-6 col-lg-4" margin="auto">
+                  <h5>{{ item.get_short_name }}</h5>
+                  <a href="{% url 'item' item.id %}"><img src="{{ item.image.url }}" width="150" height="150"
+                     class="img-responsive" alt="Изображение"></a>
+                  <h5><span class="text-muted">{{ item.price }}</span></h5>
+                </div><!--/.col-xs-6.col-lg-4-->
+              {% endfor %}
+          </div><!--/row-->
+          <div class="row">
+              <div class="large-3 large-offset-5 columns">
+                  <ul class="pagination">
+                      {% if items.has_previous %}
+                        <li class="arrow"><a href="/page/{{ items.previous_page_number }}/">&laquo;</a></li>
+                      {% else %}
+                        <li class="arrow unavailable"></li>
+                      {% endif %}
+                      {% for page in items.paginator.page_range %}
+                        {% if page == items.number %}
+                           <li class="current"><a href="/page/{{ page }}/">{{ page }}</a></li>
+                        {% else %}
+                           <li><a href="/page/{{ page }}">{{ page }}</a></li>
+                        {% endif %}
+                      {% endfor %}
+                      {% if items.has_next %}
+                        <li class="arrow"><a href="/page/{{ items.next_page_number }}/">&raquo;</a></li>
+                      {% else %}
+                        <li class="arrow unavailable"></li>
+                      {% endif %}
+                  </ul>
+              </div>
+          </div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}
+Поиск
+{% endblock %}
+
+{% block jumbotron %}
+          <div class="jumbotron">
+            <h1>Результат поиска для "{{ query }}"</h1>
+            <h2><a href="http://ngve.ru/">NGVE.RU</a></h2>
+          </div>
+{% endblock %}
+
+{% block content %}
+          <div class="row">
+              {% if results %}
+                  {% for item in results %}
+                    <div class="col-xs-6 col-lg-4" margin="auto">
+                      <h5>{{ item.get_short_name }}</h5>
+                      <a href="{% url 'item' item.id %}"><img src="{{ item.image.url }}" width="100" height="100"
+                                class="img-responsive" alt="Изображение"></a>
+                      <h5><span class="text-muted">{{ item.price }}</span></h5>
+                    </div><!--/.col-xs-6.col-lg-4-->
+              {% endfor %}
+              {% else %}
+                {% if query %}
+                  <h4>Поиск не дал результата.</h4>
+                {% else %}
+                  <h4>Введите значение для поиска в верхней части страницы</br> и нажмите Enter.</h4>
+                {% endif %}
+              {% endif %}
+          </div><!--/row-->
+{% endblock %}

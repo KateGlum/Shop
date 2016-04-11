@@ -1,0 +1,49 @@
+﻿.item .img-responsive img{
+    display: inline-block;
+    vertical-align: top;
+    margin-top:5px;
+}
+
+#pic{
+    float: left;
+   }
+#text{
+    margin-left: 410px;
+   }
+#desc{
+    text-align: justify;
+}
+.list-lest{
+    margin-top: 40px;
+}
+#summa:after{
+    content: 'руб.';
+    margin-left: 5px;
+}
+.summa:after{
+    content: 'руб.';
+    margin-left: 5px;
+}
+.korzina .cow{
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 10px;
+}
+.korzina .cow img, .korzina .row name, .korzina .row price, .korzina .row .delete{
+    display: inline-block;
+    vertical-align: middle;
+    width: 30%;
+    font-size: 14px;
+}
+.korzina .cow img{
+    max-height: 100px;
+    width: auto;
+    margin-right: 30px;
+}
+
+.korzina .cow .delete{
+    width: 10px;
+    text-decoration: underline;
+    color: red;
+    cursor: pointer;
+}
