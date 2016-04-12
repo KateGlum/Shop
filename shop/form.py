@@ -11,4 +11,4 @@ class ZakazForm(forms.ModelForm):
 class AnnotationForm(forms.ModelForm):
     class Meta:
         model = Annotation
-        fields = ('author', 'text')
+        fields = ('text', )

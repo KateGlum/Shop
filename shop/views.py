@@ -2,6 +2,7 @@
 # !/usr/bin/env python3
 
 from django.contrib import auth
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect, render_to_response, get_object_or_404
 from django.template.context_processors import csrf
 from django.views.generic.edit import FormView
@@ -11,6 +12,7 @@ from django.http import Http404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.core.paginator import Paginator
+from random import randrange
 
 
 def main(request, page_number=1):
@@ -37,11 +39,13 @@ def show_item(request, item_id):
 @login_required(login_url='/accounts/login/')
 def add_comment(request, item_id):
     if request.POST:
-        form = AnnotationForm(request.POST)
+        form = AnnotationForm(request.POST, 'user')
         if form.is_valid():
             annotation = form.save(commit=False)
+            annotation.author = request.user
             annotation.item_annot = Item.objects.get(id=item_id)
             form.save()
+
     return redirect('/items/%s' % item_id)
 
 

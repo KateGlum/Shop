@@ -32,17 +32,17 @@
 </div>
 <hr>
 <h3>Ваши отзывы</h3>
-{% for annotation in item.comments.all %}
+{% for annotation in comments %}
     <div class="comment">
         <div class="date">
             {{ annotation.created_date }}
         </div>
-        <strong>{{ annotation.author }}</strong>
+        <strong>{{ annotation.author.username }}</strong>
         <p>{{ annotation.text|linebreaks }}</p>
     </div>
 {% empty %}
     <p>Отзывы: {{ item.comments.count }}</p>
-    <p>Добавьте первый отзыв "{{ item.name }}"</p>
+    <p>Добавьте первый отзыв "{{ item.name }}", если вы зарегистрированный пользователь.</p>
 {% endfor %}
 
 {% if user.is_authenticated %}

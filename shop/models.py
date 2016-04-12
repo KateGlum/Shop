@@ -62,16 +62,11 @@ class Zakaz(models.Model):
 class Annotation(models.Model):
     text = models.TextField(verbose_name='Отзыв')
     created_date = models.DateTimeField(default=timezone.now, verbose_name='Дата создания')
-    approved_annot = models.BooleanField(default=False, verbose_name='Подтверждение')
     item_annot = models.ForeignKey(Item, related_name='comments', verbose_name='Товар')
-    author = models.CharField(max_length=255, verbose_name='Имя')
+    author = models.ForeignKey(User, blank=True, null=True, verbose_name='Имя')
 
     def __str__(self):
         return self.text
-
-    def approve(self):
-        self.approved_annot = True
-        self.save()
 
     class Meta:
         verbose_name = 'Комментарий'
