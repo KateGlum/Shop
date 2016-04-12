@@ -1,13 +1,15 @@
 # -*- coding: utf-8 -*-
 # !/usr/bin/env python3
 
-from django.shortcuts import render, get_object_or_404, redirect, render_to_response
+from django.contrib import auth
+from django.shortcuts import render, redirect, render_to_response, get_object_or_404
 from django.template.context_processors import csrf
 from django.views.generic.edit import FormView
-from shop.form import ZakazForm
-from shop.models import Item, Category
-from django.http import Http404, HttpResponse
-from django.utils import timezone
+from shop.form import ZakazForm, AnnotationForm
+from shop.models import Item, Category, Annotation
+from django.http import Http404
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm
 from django.core.paginator import Paginator
 
 
@@ -22,8 +24,42 @@ def contact(request):
 
 
 def show_item(request, item_id):
-    item = get_object_or_404(Item, id=item_id)
-    return render(request, 'shop/item.html', {'item': item})
+    form = AnnotationForm
+    args = {}
+    args.update(csrf(request))
+    args['item'] = get_object_or_404(Item, id=item_id)
+    args['comments'] = Annotation.objects.filter(item_annot_id=item_id)
+    args['form'] = form
+    args['username'] = auth.get_user(request).username
+    return render(request, 'shop/item.html', args)
+
+
+@login_required(login_url='/accounts/login/')
+def add_comment(request, item_id):
+    if request.POST:
+        form = AnnotationForm(request.POST)
+        if form.is_valid():
+            annotation = form.save(commit=False)
+            annotation.item_annot = Item.objects.get(id=item_id)
+            form.save()
+    return redirect('/items/%s' % item_id)
+
+
+def register(request):
+    args = {}
+    args.update(csrf(request))
+    args['form'] = UserCreationForm()
+    if request.POST:
+        newuser_form = UserCreationForm(request.POST)
+        if newuser_form.is_valid():
+            newuser_form.save()
+            newuser = auth.authenticate(username=newuser_form.cleaned_data['username'],
+                                        password=newuser_form.cleaned_data['password2'])
+            auth.login(request, newuser)
+            return redirect('/')
+        else:
+            args['form'] = newuser_form
+    return render_to_response('registration/register.html', args)
 
 
 def show_category(request, alias):

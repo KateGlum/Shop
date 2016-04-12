@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # !/usr/bin/env python3
 
+from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
 
@@ -16,6 +17,7 @@ class Category(models.Model):
     class Meta:
         verbose_name = 'Категория'
         verbose_name_plural = 'Категории'
+
 
 SHORT_NAME_LEN = 35
 
@@ -57,3 +59,20 @@ class Zakaz(models.Model):
         verbose_name_plural = 'Заказы'
 
 
+class Annotation(models.Model):
+    text = models.TextField(verbose_name='Отзыв')
+    created_date = models.DateTimeField(default=timezone.now, verbose_name='Дата создания')
+    approved_annot = models.BooleanField(default=False, verbose_name='Подтверждение')
+    item_annot = models.ForeignKey(Item, related_name='comments', verbose_name='Товар')
+    author = models.CharField(max_length=255, verbose_name='Имя')
+
+    def __str__(self):
+        return self.text
+
+    def approve(self):
+        self.approved_annot = True
+        self.save()
+
+    class Meta:
+        verbose_name = 'Комментарий'
+        verbose_name_plural = 'Комментарии'

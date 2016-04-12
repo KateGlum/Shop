@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Item, Zakaz
+from .models import Category, Item, Zakaz, Annotation
 
 
 class ItemAdmin(admin.ModelAdmin):
@@ -14,6 +14,11 @@ class ZakazAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'phone', 'data_zakaza', 'zakaz', 'total')
 
 
+class AnnotationAdmin(admin.ModelAdmin):
+    list_display = ('id', 'author', 'text', 'created_date', 'item_annot')
+
+
+admin.site.register(Annotation, AnnotationAdmin)
 admin.site.register(Item, ItemAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Zakaz, ZakazAdmin)

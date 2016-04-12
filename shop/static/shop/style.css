@@ -47,3 +47,27 @@
     color: red;
     cursor: pointer;
 }
+
+.form-signin .button{
+    margin-left: 140px;
+    margin-top: 10px;
+}
+
+.form-signin table{
+    margin-top: 30px;
+}
+
+table{
+    border-spacing: 7px 11px; /* Расстояние между ячейками */
+}
+td{
+    padding: 5px; /* Поля вокруг текста */
+}
+
+.annotation{
+    margin-left: 10px;
+    margin-top: 10px;
+    border-spacing: 7px 11px;
+    padding: 5px;
+}
+

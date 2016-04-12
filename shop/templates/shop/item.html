@@ -30,6 +30,29 @@
 <div id="desc">
     <h4>{{ item.description }}</h4>
 </div>
+<hr>
+<h3>Ваши отзывы</h3>
+{% for annotation in item.comments.all %}
+    <div class="comment">
+        <div class="date">
+            {{ annotation.created_date }}
+        </div>
+        <strong>{{ annotation.author }}</strong>
+        <p>{{ annotation.text|linebreaks }}</p>
+    </div>
+{% empty %}
+    <p>Отзывы: {{ item.comments.count }}</p>
+    <p>Добавьте первый отзыв "{{ item.name }}"</p>
+{% endfor %}
+
+{% if user.is_authenticated %}
+<form class="annotation" action="/items/add_comment/{{ item.id }}/" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" class="btn btn-xs btn-primary" value="Отправить &raquo;">
+</form>
+{% endif %}
+
 <script type="text/javascript">
     $(function() {
         var arr1 = $.cookie('cart');
