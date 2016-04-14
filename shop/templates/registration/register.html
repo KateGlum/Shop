@@ -15,8 +15,23 @@
 <div class="login">
       <form method="post" action="/accounts/register/" class="form-signin">
         {% csrf_token %}
-        {{ form }}
-        <input class="button" type="submit" value="Зарегистрироваться">
+
+        <table>
+          <tr>
+            <td>{{ form.username.label_tag }}</td>
+            <td>{{ form.username }}</td>
+          </tr>
+          <tr>
+            <td>{{ form.password1.label_tag }}</td>
+            <td>{{ form.password1 }}</td>
+          </tr>
+           <tr>
+            <td>{{ form.password2.label_tag }}</td>
+            <td>{{ form.password2 }}</td>
+          </tr>
+       </table>
+
+        <input class="button-xs" type="submit" value="Зарегистрироваться">
         <input type="hidden" name="next" value="{{ next }}" />
       </form>
     </div> <!-- /container -->

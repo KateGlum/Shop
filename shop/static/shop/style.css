@@ -58,10 +58,10 @@
 }
 
 table{
-    border-spacing: 7px 11px; /* Расстояние между ячейками */
+    border-spacing: 7px 11px;
 }
 td{
-    padding: 5px; /* Поля вокруг текста */
+    padding: 5px;
 }
 
 .annotation{
@@ -70,4 +70,10 @@ td{
     border-spacing: 7px 11px;
     padding: 5px;
 }
+
+.form-signin .button-xs{
+    margin-left: 175px;
+    margin-top: 10px;
+
+
 

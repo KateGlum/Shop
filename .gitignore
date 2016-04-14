@@ -3,3 +3,4 @@ __pycache__
 gaz
 db.postgres_psycopg2
 .DS_Store
+.idea
