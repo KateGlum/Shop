@@ -6,25 +6,27 @@
 {% endblock %}
 
 {% block jumbotron %}
-          <div class="jumbotron">
-            <h1>Магазин</h1>
-            <h2><a href="http://ngve.ru/">NGVE.RU</a> Товары</h2>
-          </div>
+        <p class="leftstr">Магазин</p>
+        <p class="rightstr"><a href="http://ngve.ru/">NGVE.RU</a> > Товары</p>
 {% endblock %}
 
 {% block content %}
-          <div class="row">
+            <div class="row">
               {% for item in items %}
                 <div class="col-xs-6 col-lg-4" margin="auto">
-                  <h5>{{ item.get_short_name }}</h5>
-                  <a href="{% url 'item' item.id %}"><img src="{{ item.image.url }}" width="150" height="150"
-                     class="img-responsive" alt="Изображение"></a>
-                  <h5><span class="text-muted">{{ item.price|intcomma }}</span></h5>
-                </div><!--/.col-xs-6.col-lg-4-->
+                <ul class="products">
+                  <li>
+                      <h6>{{ item.get_short_name }}</h6>
+                      <a href="{% url 'item' item.id %}"><img src="{{ item.image.url }}" width="150" height="150"
+                                                                       class="img-responsive" alt="Изображение"></a>
+                      <h6><span class="text-muted">{{ item.price|intcomma }}</span></h6>
+                  </li>
+                </ul>
+                </div>
               {% endfor %}
-          </div><!--/row-->
+            </div>
           <div class="row">
-              <div class="large-3 large-offset-5 columns">
+              <div class="large-3 large-offset-5 columns" align="center">
                   <ul class="pagination">
                       {% if items.has_previous %}
                         <li class="arrow"><a href="/page/{{ items.previous_page_number }}/">&laquo;</a></li>

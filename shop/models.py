@@ -19,7 +19,7 @@ class Category(models.Model):
         verbose_name_plural = 'Категории'
 
 
-SHORT_NAME_LEN = 35
+SHORT_NAME_LEN = 30
 
 class Item(models.Model):
     name = models.CharField(max_length=255, verbose_name='Наименование товара')
