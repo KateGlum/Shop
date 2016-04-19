@@ -5,15 +5,12 @@
 .ngve {
     padding-left: 60px;
     padding-right: 60px;
-    padding-top: 1px;
-    padding-bottom: 5px;
-    border-radius: 6px;
     margin-top: 70px;
     margin-bottom: 40px;
     color: inherit;
     background-color: #dd3333;
-    height: 8em;
-    line-height: 8em;
+    height: 100px;
+    line-height: 92px;
 }
 
 p.leftstr, p.rightstr {
@@ -22,15 +19,19 @@ p.leftstr, p.rightstr {
 }
 
 p.leftstr {
-    font-family: Mistral, Microsoft Sans Serif, Open Sans, Roboto Condensed, Segoe Script, Yu Gothic UI;
-    font-size: 28pt; /* Размер шрифта в пунктах */
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 25pt; /* Размер шрифта в пунктах */
+    color: #ffffff;
 }
 
 p.rightstr {
     text-align: right; /* Выравнивание по правой стороне */
-    font-family: Mistral, Microsoft Sans Serif, Open Sans, Roboto Condensed, Segoe Script;
-    font-size: 20pt; /* Размер шрифта в пунктах */
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 18pt; /* Размер шрифта в пунктах */
+    color: #ffffff;
 }
+
+#raz p.leftstr {width: 100%;}
 
 .site-main {
     position: relative;
@@ -127,7 +128,6 @@ ul.products li {
     display: block;
     clear: both;
     background-color: #383838;
-    border-radius: 6px;
     padding-left: 130px;
     padding-right: 130px;
     height: 350px;
@@ -199,10 +199,26 @@ ul.products li {
    .footer-site .sidebar-footer {height: 87px; }
    .footer-site .widget-wrap {height: 87px; }
    .footer-site .footer-bg {height: 87px; }
-   p.leftstr {font: 18px Open Sans; padding-top: 35px; padding-bottom: 5px;}
-   p.rightstr {font: 15px Open Sans; padding-top: 35px; padding-bottom: 5px;}
+   p.leftstr {font: 18px Verdana, Arial, Helvetica, sans-serif; padding-top: 35px; padding-bottom: 5px;}
+   p.rightstr {font: 15px Verdana, Arial, Helvetica, sans-serif; padding-top: 35px; padding-bottom: 5px;}
    #raz p.leftstr {width: 100%;}
    #text {margin-left: 210px;}
+}
+
+@media screen and (max-width: 480px) {
+   html {-webkit-text-size-adjust: none;}
+   body {
+      padding: 1px 1px;
+   }
+   .footer-site .site-info {padding: 1px 0}
+   p.leftstr {padding-top: 20%; padding-bottom: 30%;}
+   p.rightstr {padding-top: 20%; padding-bottom: 30%;}
+   .site-main .sidebar-container {display: none;}
+   .content-site {width: 100%;}
+   .content-area {padding-left: 0em; padding-right: 32px;}
+   #text {margin-left: 10px;}
+   .form-signin label {font-weight: normal; font: 15px Verdana, Arial, Helvetica, sans-serif;}
+   .form-signin .button-xs {margin-left: -30px;}
 }
 
 .footer-site .copyright {
@@ -244,11 +260,6 @@ ul.products li {
     cursor: pointer;
 }
 
-.form-signin .button{
-    margin-left: 180px;
-    margin-top: 10px;
-}
-
 .form-signin table{
     margin-top: 30px;
 }
@@ -267,9 +278,15 @@ td{
     padding: 5px;
 }
 
-.form-signin .button-xs{
-    margin-left: 230px;
-    margin-top: 10px;
+.form-signin .button-xs {
+    margin-left: 0px;
+    margin-top: 30px;
+    padding: 1px 5px;
+    font-size: 14px;
+    line-height: 1.5;
+    border-radius: 3px;
+    background-color: #4582ec;
+    border-color: #4582ec;
+    color: #ffffff;
+    font: 15px Verdana, Arial, Helvetica, sans-serif;
 }
-
-
