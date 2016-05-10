@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # !/usr/bin/env python3
 
+
 from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
@@ -20,6 +21,7 @@ class Category(models.Model):
 
 
 SHORT_NAME_LEN = 30
+
 
 class Item(models.Model):
     name = models.CharField(max_length=255, verbose_name='Наименование товара')
@@ -71,3 +73,48 @@ class Annotation(models.Model):
     class Meta:
         verbose_name = 'Комментарий'
         verbose_name_plural = 'Комментарии'
+
+
+class Currency(models.Model):
+    name = models.CharField(max_length=255, verbose_name='Валюта')
+    rate = models.DecimalField(max_digits=10, decimal_places=1, default=0, verbose_name='Курс')
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Курс'
+        verbose_name_plural = 'Курсы'
+
+
+class ItemForeign(models.Model):
+    name = models.CharField(max_length=255, verbose_name='Наименование товара')
+    price = models.DecimalField(max_digits=10, decimal_places=1, default=0, verbose_name='Цена')
+    description = models.TextField(verbose_name='Описание товара')
+    alias = models.SlugField(verbose_name='Alias товара')
+    image = models.ImageField(upload_to='media', blank=True, null=True, verbose_name='изображение')
+    category = models.ForeignKey(Category, null=True, blank=True)
+    currency = models.ForeignKey(Currency, null=True, blank=True)
+    rate = models.DecimalField(max_digits=10, decimal_places=1, default=0, verbose_name='Курс')
+
+    def __str__(self):
+        return self.name
+
+    def get_short_name(self):
+        if len(self.name) > SHORT_NAME_LEN:
+            return self.name[:SHORT_NAME_LEN]
+        else:
+            return self.name
+
+    def save(self, *args, **kwargs):
+        if self.currency:
+            self.rate = self.currency.rate
+        super(ItemForeign, self).save(*args, **kwargs)
+
+    def cost(self):
+        return self.price * self.rate
+
+    class Meta:
+        ordering = ['-price', 'name']
+        verbose_name = 'Товар_импорт'
+        verbose_name_plural = 'Товары_импорт'

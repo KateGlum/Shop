@@ -1,0 +1,84 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}
+Автобус ПАЗ 32053
+{% endblock %}
+
+{% block jumbotron %}
+        <p class="leftstr">Автобус ПАЗ 32053</p>
+        <p class="rightstr"><a href="http://ngve.ru/">NGVE.RU</a> > Автобус ПАЗ 32053 </p>
+{% endblock %}
+
+
+{% block content %}
+    <p>Вариант с установкой 5 баллонов по 60 литров в раму обеспечивает примерно
+        500 км пробега в газодизельном режиме.</p>
+        <br /><br />
+        <p>Полный набор оборудования состоит из:</p>
+        <!-- Table -->
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Наименование компонента</th>
+              <th>Количество</th>
+              <th>Компонент</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Баллон Тип-1 65 литров</td>
+              <td>5</td>
+              <td><img src="/media/media/CNG-Cylinder_1.jpg" height="100">
+              <br /><h6>18,400.00 руб.</h6></td>
+            </tr>
+            <tr>
+              <td>Вентиль метановый баллонный</td>
+              <td>5</td>
+              <td><img src="/media/media/valve.png" height="100">
+              <br /><h6>1,440.00 руб.</h6></td>
+            </tr>
+            <tr>
+              <td>Стальная трубка высокого давления, 6 мм</td>
+              <td>2</td>
+              <td><img src="/media/media/6103106-FARO.png" height="100">
+              <br /><h6>880.00 руб.</h6></td>
+            </tr>
+            <tr>
+              <td>Гайка стальная с муфтой, 6 мм</td>
+              <td>14</td>
+              <td><img src="/media/media/cng-nut-and-ferrules.jpg" height="100">
+              <br /><h6>80.00 руб.</h6></td>
+            </tr>
+            <tr>
+              <td>Заправочная горловина</td>
+              <td>1</td>
+              <td><img src="/media/media/cng_filling.jpg" height="100">
+              <br /><h6>2,400.00 руб.</h6></td>
+            </tr>
+            <tr>
+              <td>Манометр А6мм Р 0-400 бар</td>
+              <td>1</td>
+              <td><img src="/media/media/man.png" height="100">
+              <br /><h6>880.00 руб.</h6></td>
+            </tr>
+            <tr>
+              <td>Фильтр высокого давления</td>
+              <td>1</td>
+              <td><img src="/media/media/filter.png" height="100">
+              <br /><h6>3,760.00 руб.</h6></td>
+            </tr>
+            <tr>
+              <td>12В 3 бара TRIOL M ЛЕГКОВОЙ 200 ЛС</td>
+              <td>1</td>
+              <td><img src="/media/media/kit3.png" height="100">
+              <br /><h6>44,000.00 руб.</h6></td>
+            </tr>
+            <tr>
+              <td><h6>Итого: 153.120 руб.</h6></td>
+              <td></td><td></td>
+            </tr>
+          </tbody>
+        </table>
+        <p>Цены розничные и могут изменяться в зависимости от курса рубля,
+          проверяйте цены по <a href="{% url 'main' %}">ссылке</a>, там они всегда актуальные.</p>
+{% endblock %}

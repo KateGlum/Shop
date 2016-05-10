@@ -17,7 +17,7 @@
                       <img src="{{ item.image.url }}" width="800" height="800" class="img-responsive" alt="Изображение">
                     </div>
                     <div id="text">
-                      <h3><span class="summa">{{ item.price }}</span></h3>
+                      <h3><span class="summa">{{ item.cost }}</span></h3>
                       <h4>Категория:{{ item.category }}</h4>
                       <h4>Метка:{{ item.alias }}</h4>
                       <p><a class="btn btn-sm btn-default" href="#" role="button">Добавить в корзину &raquo;</a></p>
@@ -72,7 +72,7 @@
             }
             var json = $.parseJSON(arr);
             json.push({
-                'name': $('.jumbotron h1').text(),
+                'name': $('.leftstr').text(),
                 'price': $('#text h3 .summa').text(),
                 'img': $('img.img-responsive').attr('src'),
             });

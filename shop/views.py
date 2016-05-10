@@ -7,16 +7,15 @@ from django.shortcuts import render, redirect, render_to_response, get_object_or
 from django.template.context_processors import csrf
 from django.views.generic.edit import FormView
 from shop.form import ZakazForm, AnnotationForm
-from shop.models import Item, Category, Annotation
+from shop.models import Item, Category, Annotation, ItemForeign
 from django.http import Http404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.core.paginator import Paginator
-from random import randrange
 
 
 def main(request, page_number=1):
-    items = Item.objects.all()
+    items = ItemForeign.objects.all()
     current_page = Paginator(items, 9)
     return render(request, 'shop/shop.html', {'items': current_page.page(page_number)})
 
@@ -25,11 +24,31 @@ def contact(request):
     return render(request, 'shop/contact.html')
 
 
+def sedelnyi_taygach1(request):
+    return render(request, 'shop/sedelnyi_taygach1.html')
+
+
+def sedelnyi_taygach2(request):
+    return render(request, 'shop/sedelnyi_taygach2.html')
+
+
+def sedelnyi_taygach3(request):
+    return render(request, 'shop/sedelnyi_taygach3.html')
+
+
+def avtobus_paz(request):
+    return render(request, 'shop/avtobus_paz.html')
+
+
+def maliy_tonaj(request):
+    return render(request, 'shop/maliy_tonaj.html')
+
+
 def show_item(request, item_id):
     form = AnnotationForm
     args = {}
     args.update(csrf(request))
-    args['item'] = get_object_or_404(Item, id=item_id)
+    args['item'] = get_object_or_404(ItemForeign, id=item_id)
     args['comments'] = Annotation.objects.filter(item_annot_id=item_id)
     args['form'] = form
     args['username'] = auth.get_user(request).username
@@ -45,7 +64,6 @@ def add_comment(request, item_id):
             annotation.author = request.user
             annotation.item_annot = Item.objects.get(id=item_id)
             form.save()
-
     return redirect('/items/%s' % item_id)
 
 
@@ -69,7 +87,7 @@ def register(request):
 def show_category(request, alias):
     try:
         category = Category.objects.get(alias=alias)
-        items = Item.objects.filter(category=category)
+        items = ItemForeign.objects.filter(category=category)
     except:
         raise Http404('Объект не найден')
     context = {
@@ -97,7 +115,8 @@ def search(request):
     query = request.GET.get('q', '')
     results = []
     if query:
-        results = Item.objects.filter(name__icontains=query)
+        results = ItemForeign.objects.filter(name__icontains=query)
     return render_to_response('shop/search.html',
                               {'query': query,
                                'results': results})
+

@@ -19,7 +19,7 @@
                       <h6>{{ item.get_short_name }}</h6>
                       <a href="{% url 'item' item.id %}"><img src="{{ item.image.url }}" width="150" height="150"
                                                                        class="img-responsive" alt="Изображение"></a>
-                      <h6><span class="text-muted">{{ item.price|intcomma }}</span></h6>
+                      <h6><span class="text-muted">{{ item.cost|intcomma }}</span></h6>
                   </li>
                 </ul>
                 </div>

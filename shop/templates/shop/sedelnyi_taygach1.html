@@ -1,0 +1,85 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}
+Седельный тягач №1
+{% endblock %}
+
+{% block jumbotron %}
+        <p class="leftstr">Седельный тягач №1</p>
+        <p class="rightstr"><a href="http://ngve.ru/">NGVE.RU</a> > Седельный тягач №1 </p>
+{% endblock %}
+
+
+{% block content %}
+        <p>Вариант с установкой баллонов с противоположной стороны от топливного бака.
+           Подходит для всех типов полуприцепов, дальность пробега в газодизельном режиме составляет 400-600 км.
+           Пример, на фотографии ниже:</p>
+        <img src="/media/media/sed_tayg1.jpg" alt="sed_tayg1" height="500" width="800"><br /><br />
+        <p>Полный набор оборудования состоит из:</p>
+        <!-- Table -->
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Наименование компонента</th>
+              <th>Количество</th>
+              <th>Компонент</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Баллон Тип-1 108 литров</td>
+              <td>4</td>
+              <td><img src="/media/media/CNG-Cylinder_1.jpg" height="100">
+              <br /><h6>15,180.00 руб.</h6></td>
+            </tr>
+            <tr>
+              <td>Вентиль метановый баллонный</td>
+              <td>4</td>
+              <td><img src="/media/media/valve.png" height="100">
+              <br /><h6>1,242.00 руб.</h6></td>
+            </tr>
+            <tr>
+              <td>Стальная трубка высокого давления, 6 мм</td>
+              <td>2</td>
+              <td><img src="/media/media/6103106-FARO.png" height="100">
+              <br /><h6>759.00 руб.</h6></td>
+            </tr>
+            <tr>
+              <td>Гайка стальная с муфтой, 6 мм</td>
+              <td>10</td>
+              <td><img src="/media/media/cng-nut-and-ferrules.jpg" height="100">
+              <br /><h6>69.00 руб.</h6></td>
+            </tr>
+            <tr>
+              <td>Заправочная горловина</td>
+              <td>1</td>
+              <td><img src="/media/media/cng_filling.jpg" height="100">
+              <br /><h6>2,070.00 руб.</h6></td>
+            </tr>
+            <tr>
+              <td>Манометр А6мм Р 0-400 бар</td>
+              <td>1</td>
+              <td><img src="/media/media/man.png" height="100">
+              <br /><h6>759.00 руб.</h6></td>
+            </tr>
+            <tr>
+              <td>Фильтр высокого давления</td>
+              <td>1</td>
+              <td><img src="/media/media/filter.png" height="100">
+              <br /><h6>3,243.00 руб.</h6></td>
+            </tr>
+            <tr>
+              <td>12/24 В 3 бара TRIOL М Грузовой 500ЛС</td>
+              <td>1</td>
+              <td><img src="/media/media/kit222.jpg" height="100">
+              <br /><h6>46,989.00 руб.</h6></td>
+            </tr>
+            <tr>
+              <td><h6>Итого: 120.957 руб.</h6></td>
+              <td></td><td></td>
+            </tr>
+          </tbody>
+        </table>
+        <p>Цены розничные и могут изменяться в зависимости от курса рубля,
+          проверяйте цены по <a href="{% url 'main' %}">ссылке</a>, там они всегда актуальные.</p>
+{% endblock %}
