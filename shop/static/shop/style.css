@@ -208,8 +208,8 @@ ul.products li {
    .footer-site .sidebar-footer {height: 87px; }
    .footer-site .widget-wrap {height: 87px; }
    .footer-site .footer-bg {height: 87px; }
-   p.leftstr {font: 18px Open Sans, PT Sans, Roboto; padding-top: 28px; padding-bottom: 5px;}
-   p.rightstr {font: 15px Open Sans, PT Sans, Roboto; padding-top: 28px; padding-bottom: 5px;}
+   p.leftstr {font: 18px Open Sans, PT Sans, Roboto; padding-top: 35px; padding-bottom: 5px;}
+   p.rightstr {font: 15px Open Sans, PT Sans, Roboto; padding-top: 35px; padding-bottom: 5px;}
    #raz p.leftstr {width: 100%;}
    #text {margin-left: 210px;}
 }
@@ -230,7 +230,8 @@ ul.products li {
    .col-xs-12 {padding-left: 0px; padding-right: 0px;}
    .footer-bg {padding-left: 0px;}
    .sidebar-footer {padding: 0px;}
-   .img-res {height: 200px; width: 380px;}
+   .img-res {height: 250px; width: 375px;}
+   .ngve {padding-left: 20px; padding-right: 20px;}
 }
 
 .footer-site .copyright {
