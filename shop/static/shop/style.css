@@ -2,6 +2,11 @@
     font-family: Open Sans, PT Sans, Roboto !important;
 }
 
+.img-resp {
+    display: block;
+    max-width: 100%;
+}
+
 li:hover ul {
     display: block; /* При выделении пункта курсором мыши отображается подменю */
 }
@@ -203,8 +208,8 @@ ul.products li {
    .footer-site .sidebar-footer {height: 87px; }
    .footer-site .widget-wrap {height: 87px; }
    .footer-site .footer-bg {height: 87px; }
-   p.leftstr {font: 18px Open Sans, PT Sans, Roboto; padding-top: 35px; padding-bottom: 5px;}
-   p.rightstr {font: 15px Open Sans, PT Sans, Roboto; padding-top: 35px; padding-bottom: 5px;}
+   p.leftstr {font: 18px Open Sans, PT Sans, Roboto; padding-top: 28px; padding-bottom: 5px;}
+   p.rightstr {font: 15px Open Sans, PT Sans, Roboto; padding-top: 28px; padding-bottom: 5px;}
    #raz p.leftstr {width: 100%;}
    #text {margin-left: 210px;}
 }
@@ -215,14 +220,17 @@ ul.products li {
       padding: 1px 1px;
    }
    .footer-site .site-info {padding: 1px 0}
-   p.leftstr {padding-top: 20%; padding-bottom: 30%;}
-   p.rightstr {padding-top: 20%; padding-bottom: 30%;}
    .site-main .sidebar-container {display: none;}
    .content-site {width: 100%;}
    .content-area {padding-left: 0em; padding-right: 32px;}
    #text {margin-left: 10px;}
    .form-signin label {font-weight: normal; font: 15px Open Sans, PT Sans, Roboto;}
    .form-signin .button-xs {margin-left: -30px;}
+   .container-fluid {padding-left: 0px; padding-right: 0px;}
+   .col-xs-12 {padding-left: 0px; padding-right: 0px;}
+   .footer-bg {padding-left: 0px;}
+   .sidebar-footer {padding: 0px;}
+   .img-res {height: 200px; width: 380px;}
 }
 
 .footer-site .copyright {

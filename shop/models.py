@@ -20,7 +20,7 @@ class Category(models.Model):
         verbose_name_plural = 'Категории'
 
 
-SHORT_NAME_LEN = 30
+SHORT_NAME_LEN = 18
 
 
 class Item(models.Model):
